@@ -1,89 +1,47 @@
-# thelook-mini-analysis
-Mini analisa untuk data The Look Ecommerce
-📊 Mini Project SQL: Analisis Bisnis TheLook E-Commerce
+# Mini Project SQL: TheLook E-commerce
 
-🎯 Tujuan Project
+Project analisis data menggunakan **SQL** di **Google BigQuery** (materi *Basic SQL* hingga *Simple JOIN*) sebagai bagian dari program *Data Analytics Bootcamp*[cite: 1].
 
-Project ini bertujuan untuk menganalisis performa produk, karakteristik pelanggan, dan kontribusi penjualan per kategori di TheLook E-commerce. Dengan berperan sebagai Junior Data Analyst, analisis ini dilakukan menggunakan SQL (Basic SQL hingga Simple JOIN) untuk menjawab lima pertanyaan bisnis utama guna membantu tim Product, Marketing, CRM, dan Manajemen dalam mengambil keputusan berbasis data.
+---
 
-🗄️ Dataset
+## Tujuan Project
 
-Analisis ini menggunakan dataset publik yang tersedia di Google BigQuery:
+Berperan sebagai *Junior Data Analyst* di **TheLook E-commerce**, project ini bertujuan membantu tim bisnis memahami karakteristik produk yang dijual, pelanggan yang melakukan pemesanan, serta kategori produk yang paling berkontribusi terhadap penjualan melalui lima pertanyaan bisnis utama[cite: 1].
 
-Sumber Dataset: bigquery-public-data.thelook_ecommerce
+---
 
-Tabel yang Digunakan:
+## Dataset
 
-products: Informasi detail mengenai katalog produk (nama, kategori, merek, department, harga retail).
+* **Sumber Dataset Publik:** `bigquery-public-data.thelook_ecommerce` (Google BigQuery)[cite: 1]
+* **Tabel yang Digunakan:**
+  * `products`[cite: 1]
+  * `users`[cite: 1]
+  * `orders`[cite: 1]
+  * `order_items`[cite: 1]
 
-users: Data demografis dan profil pelanggan.
+---
 
-orders: Data transaksi pesanan pelanggan dan statusnya.
+## Pertanyaan Bisnis & Cakupan SQL
 
-order_items: Detail item pada setiap pesanan beserta harga jual aktual (sale_price).
+1. **Analisis Produk:** Menampilkan nama produk, kategori, *department*, merek, dan harga retail dari tabel `products` dengan membatasi hasil menjadi 20 produk pertama (`SELECT`, `FROM`, `LIMIT`)[cite: 1].
+2. **Identifikasi Produk Premium:** Mencari produk dengan `retail_price` di atas 100 (menampilkan nama produk, kategori, merek, dan harga retail) yang diurutkan dari harga tertinggi ke terendah (`WHERE`, `ORDER BY`, `DESC`)[cite: 1].
+3. **Evaluasi Kategori Produk:** Menghitung jumlah produk pada setiap kategori dari tabel `products` dan mengurutkannya dari jumlah produk terbesar (`COUNT`, `GROUP BY`, `ORDER BY`)[cite: 1].
+4. **Mengenal Pelanggan dan Pesanan:** Menggabungkan tabel `users` dan `orders` untuk menampilkan ID pesanan, status pesanan, tanggal pesanan dibuat, serta nama depan dan nama belakang pelanggan (`INNER JOIN`, `ON`, alias tabel)[cite: 1].
+5. **Analisis Penjualan per Kategori:** Menggabungkan tabel `order_items` dan `products` untuk menghitung total nilai penjualan (`order_items.sale_price`) berdasarkan kategori, menampilkan kategori dan total penjualannya, lalu mengurutkan dari nilai terbesar (`JOIN`, `SUM`, `GROUP BY`, `ORDER BY`)[cite: 1].
 
-❓ Pertanyaan Bisnis & Konsep SQL
+---
 
-Berikut adalah lima pertanyaan bisnis yang diselesaikan dalam project ini:
+## Insight Bisnis
 
-Analisis Produk (Tim Product)
+*(Lengkapi bagian ini minimal dengan dua insight bisnis berdasarkan hasil query nomor 3 dan nomor 5 setelah dijalankan di Google BigQuery[cite: 1].)*
 
-Pertanyaan: Bagaimana karakteristik 20 produk pertama yang dijual (nama produk, kategori, department, merek, dan harga retail)?
+* **Insight 1 — Sebaran Jumlah Produk per Kategori (Soal 3):** [Tuliskan temuan utama mengenai kategori dengan jumlah produk terbanyak dan implikasinya bagi Tim Product[cite: 1].]
+* **Insight 2 — Kontribusi Penjualan per Kategori (Soal 5):** [Tuliskan temuan utama mengenai kategori dengan total nilai penjualan terbesar berdasarkan `sale_price` dan bandingkan dengan jumlah produknya jika relevan[cite: 1].]
 
-Konsep SQL: SELECT, FROM, LIMIT
+---
 
-Identifikasi Produk Premium (Tim Marketing)
+## Struktur Repository
 
-Pertanyaan: Produk apa saja yang termasuk kategori premium (retail_price > 100), diurutkan dari harga tertinggi ke terendah?
-
-Konsep SQL: WHERE, ORDER BY, DESC
-
-Evaluasi Kategori Produk (Tim Product)
-
-Pertanyaan: Kategori produk mana yang memiliki jumlah varian produk terbanyak?
-
-Konsep SQL: COUNT, GROUP BY, ORDER BY
-
-Mengenal Pelanggan dan Pesanan (Tim CRM)
-
-Pertanyaan: Siapa saja pelanggan yang telah melakukan pemesanan beserta detail ID pesanan, status, dan tanggal pembuatannya?
-
-Konsep SQL: INNER JOIN, ON, Alias Tabel
-
-Analisis Penjualan per Kategori (Manajer Bisnis)
-
-Pertanyaan: Kategori produk mana yang menghasilkan total nilai penjualan (sale_price) terbesar?
-
-Konsep SQL: JOIN, SUM, GROUP BY, ORDER BY
-
-💡 Insight Bisnis (Hasil Analisis Soal 3 & 5)
-
-(Catatan: Silakan sesuaikan angka dan nama kategori di bawah ini sesuai dengan hasil eksekusi query Anda di BigQuery)
-
-Dominasi Variasi Produk (Berdasarkan Soal 3):
-
-Kategori [Nama Kategori Terbanyak, misal: Intimates / Jeans] memiliki jumlah variasi produk terbanyak dengan total [Jumlah] produk. Hal ini menunjukkan fokus inventaris yang sangat besar pada kategori tersebut dibandingkan kategori lainnya.
-
-Kontributor Pendapatan Utama (Berdasarkan Soal 5):
-
-Kategori [Nama Kategori Penjualan Tertinggi, misal: Outerwear & Coats] mencatatkan nilai penjualan tertinggi sebesar $[Total Penjualan]. Menariknya, kategori dengan jumlah item terbanyak belum tentu menjadi penyumbang pendapatan terbesar jika harga jual rata-ratanya lebih rendah (perbedaan antara volume produk vs. nilai transaksi).
-
-Rekomendasi Strategis:
-
-Tim Marketing dapat memfokuskan anggaran promosi pada kategori dengan margin/nilai penjualan tinggi untuk memaksimalkan revenue, sementara tim Product dapat mengevaluasi kategori yang memiliki banyak variasi produk namun kontribusi penjualannya rendah.
-
-📁 Struktur Repository
-
-├── README.md                 # Dokumentasi project dan insight bisnis
-└── thelook_ecommerce.sql     # Kumpulan query SQL untuk menjawab 5 pertanyaan bisnis
-
-
-🚀 Cara Menjalankan Query
-
-Buka Google Cloud Console - BigQuery.
-
-Pastikan Anda sudah masuk ke akun Google dan memiliki project aktif (dapat menggunakan BigQuery Sandbox secara gratis).
-
-Salin kode dari file thelook_ecommerce.sql ke dalam Query Editor.
-
-Jalankan setiap blok query secara terpisah untuk melihat tabel hasilnya.
+```text
+├── queries.sql   # Seluruh query SQL untuk soal 1–5 yang dijalankan di Google BigQuery
+└── README.md     # Dokumentasi project, dataset, pertanyaan bisnis, dan insight
