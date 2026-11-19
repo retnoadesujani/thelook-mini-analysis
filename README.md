@@ -35,7 +35,9 @@ Berperan sebagai *Junior Data Analyst* di **TheLook E-commerce**, project ini be
 
 *(Lengkapi bagian ini minimal dengan dua insight bisnis berdasarkan hasil query nomor 3 dan nomor 5 setelah dijalankan di Google BigQuery[cite: 1].)*
 
-* **Insight 1 — Sebaran Jumlah Produk per Kategori (Soal 3):** [Tuliskan temuan utama mengenai kategori dengan jumlah produk terbanyak dan implikasinya bagi Tim Product[cite: 1].]
+* **Insight 1 — Sebaran Jumlah Produk per Kategori (Soal 3):**
+  - Kategori produk paling tinggi adalah "intimates" dengan jumlah 2.363.
+  - Sedangkan kategori prooduk paling rendah adalah "Clothing Sets" dengan jumlah 37
 * **Insight 2 — Kontribusi Penjualan per Kategori (Soal 5):** [Tuliskan temuan utama mengenai kategori dengan total nilai penjualan terbesar berdasarkan `sale_price` dan bandingkan dengan jumlah produknya jika relevan[cite: 1].]
 
 ---
